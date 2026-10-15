@@ -1,4 +1,5 @@
-﻿services:
+
+services:
   mongo:
     image: mongo:8.0
     restart: unless-stopped
@@ -18,7 +19,8 @@
       dockerfile: Dockerfile
     restart: unless-stopped
     env_file:
-      - ./server/.env
+      - path: ./server/.env
+        required: false
     environment:
       NODE_ENV: production
       PORT: 5000
