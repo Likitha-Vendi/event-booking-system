@@ -19,8 +19,8 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:5000',
-        description: 'Development server',
+        url: '/',
+        description: 'Current server (Docker proxy or local)',
       },
       {
         url: 'https://your-production-url.com',

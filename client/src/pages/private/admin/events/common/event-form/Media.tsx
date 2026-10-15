@@ -1,3 +1,4 @@
+
 import { Button, Upload } from "antd";
 import type { EventFormStepProp } from "./EventForm";
 
@@ -9,26 +10,20 @@ function Media({
   existingMediaUrls = [],
   setExistingMediaUrls,
   loading,
-  onFinish,
-  type,
 }: EventFormStepProp) {
-  // Remove a newly added (local File) item
+  // Remove a newly added local file
   const onNewFileRemove = (index: number) => {
     setSelectedMediaFiles((prev: File[]) =>
       prev.filter((_: File, i: number) => i !== index)
     );
   };
 
-  // Remove an already-saved URL (edit mode)
+  // Remove an already-saved URL in edit mode
   const onExistingUrlRemove = (index: number) => {
     setExistingMediaUrls((prev: string[]) =>
       prev.filter((_: string, i: number) => i !== index)
     );
   };
-
-  const isLastStep = type === undefined || type === "create"
-    ? false
-    : false; // Media is always step 3, Next goes to Tickets
 
   return (
     <div className="flex flex-col gap-5">
@@ -45,7 +40,6 @@ function Media({
       </Upload>
 
       <div className="flex flex-wrap gap-5">
-        {/* Existing saved images from the database (edit mode) */}
         {existingMediaUrls.map((url: string, index: number) => (
           <div
             key={`existing-${index}`}
@@ -65,7 +59,6 @@ function Media({
           </div>
         ))}
 
-        {/* Newly selected local files in this session */}
         {selectedMediaFiles.map((file: File, index: number) => (
           <div
             key={`new-${index}`}
